@@ -33,3 +33,58 @@
 `curl -k --form user_id='https://login.salesforce.com/id/00D1U000000rQgaUAE/0051U0000022xRgQAI' --form object_name='Account' https://51.20.4.66:4444/handle_importing_job`
 
 > 2024-03-10
+
+
+
+# Sequence diagram
+
+1. Call create_importing_job with start_date `2023-03-01`
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | `2023-03-01` | 1
+
+2. Call handle_importing_job on `2023-03-20`
+
+    Import Account records from `2023-03-01` to `2023-03-19`
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | `2023-03-20` | 1
+
+3. Call handle_importing_job on `2023-03-21`
+
+    Import Account records from `2023-03-20` to `2023-03-20`
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | `2023-03-21` | 1
+
+4. Call handle_importing_job on `2023-03-22`
+
+    Import Account records from `2023-03-21` to `2023-03-21`
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | `2023-03-22` | 1
+
+5. Call pause_importing_job
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | 2023-03-22 | `0`
+
+5. Call resume_importing_job
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | 2023-03-22 | `1`
+
+6. Call handle_importing_job on `2023-03-25`
+
+    Import Account records from `2023-03-22` to `2023-03-24`
+
+    user_id | object_name | start_date | last_date | active
+    --- | --- | --- | --- | ---
+    user_1 | Account | 2023-03-01 | `2023-03-25` | 1
+    

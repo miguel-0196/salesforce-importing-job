@@ -187,10 +187,11 @@ def handle_importing_job():
         if row[5] == 0:
             return 'The job is paused', 408
 
-        save_object_data_to_bigquery(token['instance_url'], token['access_token'], object_name, row[4], row[4])
-        next_day = datetime.strptime(row[4], '%Y-%m-%d') + timedelta(days=1)
-        Importing_job_table.update_row(user_id, object_name, row[3], str(next_day).replace(' 00:00:00', ''))
-        return row[4]
+        today = datetime.datetime.now().date()
+        yesterday = today + datetime.timedelta(days=-1)
+        save_object_data_to_bigquery(token['instance_url'], token['access_token'], object_name, row[4], yesterday)
+        Importing_job_table.update_row(user_id, object_name, row[3], datetime.strptime(today, '%Y-%m-%d'))
+        return f"{user_id}: Imported {object_name} records from {row[4]} to {yesterday}."
     except Exception as err:
         return str(err), 405
     
