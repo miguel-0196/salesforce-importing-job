@@ -29,10 +29,10 @@
 
 > OK
 
-## handle_importing_job(user_id, object_name)
-`curl -k --form user_id='https://login.salesforce.com/id/00D1U000000rQgaUAE/0051U0000022xRgQAI' --form object_name='Account' https://51.20.4.66:4444/handle_importing_job`
+## handle_importing_job
+`curl -k https://51.20.4.66:4444/handle_importing_job`
 
-> 2024-03-10
+> OK
 
 
 

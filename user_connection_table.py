@@ -6,8 +6,9 @@ class User_connection_table():
         self.token_info = token_info
 
     @staticmethod
-    def get_token_info(user_id):
-        db = get_db()
+    def get_token_info(user_id, db = None):
+        if db == None:
+            db = get_db()
         row = db.execute(
             "SELECT token_info FROM user_connection_table WHERE user_id = ?", (user_id,)
         ).fetchone()
