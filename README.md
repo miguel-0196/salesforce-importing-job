@@ -1,3 +1,5 @@
+This project is for importing salesforce data to bigquery with scheduler.
+
 # RUN
 
 `docker run -p 4444:4444 199091131158.dkr.ecr.eu-north-1.amazonaws.com/salesforce-api:latest`
