@@ -21,7 +21,8 @@ class Importing_job_table():
         return row
 
     @staticmethod
-    def update_row(user_id, object_name, start_date, last_date = '0000-00-00', active = 1):
+    def update_row(user_id, object_name, start_date, active = 1):
+        last_date = start_date
         db = get_db()
         cur = db.execute(
             "UPDATE importing_job_table SET start_date = ?, last_date = ?, active = ? WHERE user_id = ? and object_name = ?", (start_date, last_date, active, user_id, object_name)
@@ -38,7 +39,8 @@ class Importing_job_table():
         return cur.lastrowid
 
     @staticmethod
-    def create(user_id, object_name, start_date, last_date = '0000-00-00', active = 1):
+    def create(user_id, object_name, start_date, active = 1):
+        last_date = start_date
         db = get_db()
         cur = db.execute(
             "INSERT INTO importing_job_table (user_id, object_name, start_date, last_date, active)"
