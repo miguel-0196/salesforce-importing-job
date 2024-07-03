@@ -1,3 +1,6 @@
+# Salesforce Data Sync to Bigquery
+![Salesforce](img/salesforce.png)
+
 This project is for importing salesforce data to bigquery with scheduler.
 
 # RUN
