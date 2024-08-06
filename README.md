@@ -1,9 +1,9 @@
-# Salesforce Data Sync to Bigquery
-![Salesforce](img/salesforce.png)
+# Salesforce to Bigquery Data Sync API
+![Salesforce](img/s-b.png)
 
-This project is for importing salesforce data to bigquery with scheduler.
+This is an API backend to synchronize Salesforce data with BigQuery, both historically and on a daily basis, using Amazon EventBridge for scheduling.
 
-# RUN
+# APIs
 
 `docker run -p 4444:4444 199091131158.dkr.ecr.eu-north-1.amazonaws.com/salesforce-api:latest`
 
