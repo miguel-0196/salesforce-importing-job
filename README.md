@@ -4,8 +4,11 @@
 This is an API backend to synchronize Salesforce data with BigQuery, both historically and on a daily basis, using Amazon EventBridge for scheduling.
 
 API backend: Python-Flask
+
 Database: Bigquery, SQLite
+
 Docker: Run on Amazon ECS
+
 Scheduler: Amazon EventBridge
 
 
